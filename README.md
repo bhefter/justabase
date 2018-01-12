@@ -13,10 +13,11 @@ Clone/download the repo and run `npm install` from the project root directory.
 ## Usage
 Run `npm run dev` at the project root to spin up a local dev server at `http://localhost:9001/`.
 
-Source js/css is located in the `src` folder within the project root.
-Source assets, like images, are located in the `dist` folder within the project root.
+Source js/css and other assets are located in the `src` folder at the project root.
 
-Run `npm run build` at the project root to create a static build in the `dist` folder within the project root.
+HTML files live within the `site` folder at the project root.
+
+Run `npm run build` at the project root to create a static build in the `dist` folder within the `site` folder at the project root.
 
 ## License
 [MIT](http://www.opensource.org/licenses/mit-license.php)
