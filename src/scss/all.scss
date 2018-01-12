@@ -1,0 +1,28 @@
+@import '../../node_modules/sanitize.css/sanitize.css';
+@import 'vars';
+@import 'util';
+
+.container {
+  background: url('../images/small.jpg');
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+
+  @include bp-min($tablet-min) {
+    background-image: url('../images/medium.jpg');
+  }
+
+  @include bp-min($desktop-min) {
+    background-image: url('../images/large.jpg');
+  }
+
+  h1 {
+    color: white;
+    margin: 0;
+
+    @include bp-min($desktop-min) {
+      color: black;
+    }
+  }
+}

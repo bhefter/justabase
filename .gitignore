@@ -1,0 +1,10 @@
+# General files to ignore.
+.DS_Store
+
+# Node/npm files to ignore.
+node_modules
+npm-debug.log
+npm-debug.log*
+
+# Compile targets to ignore
+site/dist

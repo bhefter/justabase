@@ -1,0 +1,11 @@
+// Mobile-first sizes
+$mobile-min: 320px;
+$tablet-min: 768px;
+$desktop-min: 1025px;
+$large-desktop-min: 1440px;
+
+// Desktop-first sizes
+$small-mobile-max: $mobile-min - 1;
+$mobile-max: $tablet-min - 1;
+$tablet-max: $desktop-min - 1;
+$desktop-max: $large-desktop-min - 1;
