@@ -1,3 +1,4 @@
+import { autobind } from 'core-decorators';
 import { CLASS_NAMES } from '../constants';
 
 export class Core {
@@ -8,6 +9,15 @@ export class Core {
   }
 
   init() {
+    this.bindEvents();
+  }
+
+  bindEvents() {
+    window.addEventListener('load', this.activateElement);
+  }
+
+  @autobind
+  activateElement() {
     this.elem.classList.add(CLASS_NAMES.ACTIVE);
   }
 }

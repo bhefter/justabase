@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "clean-webpack-plugin": "^0.1.17",
+    "core-decorators": "^0.20.0",
     "css-loader": "^0.28.8",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.6",
