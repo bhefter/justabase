@@ -12,9 +12,9 @@ const extractSass = new ExtractTextPlugin({
 
 const compilerPlugin = new ClosureCompiler({
   options: {
-    languageIn: 'ECMASCRIPT5',
-    languageOut: 'ECMASCRIPT5',
-    compilationLevel: 'ADVANCED',
+    languageIn: 'ECMASCRIPT6',
+    languageOut: 'ECMASCRIPT6',
+    compilationLevel: 'WHITESPACE_ONLY',
     warningLevel: 'QUIET',
     jsCode: ['./site/dist/js/all.js']
   },
