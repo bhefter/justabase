@@ -3,12 +3,27 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ClosureCompiler = require('google-closure-compiler-js').webpack;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const sassLintPlugin = require('sasslint-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'prod';
 
 const extractSass = new ExtractTextPlugin({
-  filename: './dist/css/all.css'
+  filename: './static/css/all.css'
 });
+
+const sassLint = new sassLintPlugin({
+  glob: './src/scss/**/*.s?(a|c)ss',
+  ignorePlugins: ['extract-text-webpack-plugin']
+});
+
+const copyFiles = new CopyWebpackPlugin([
+  {
+    from: './src/images/**/*',
+    to: './static/images/',
+    flatten: true
+  }
+]);
 
 const compilerPlugin = new ClosureCompiler({
   options: {
@@ -16,17 +31,18 @@ const compilerPlugin = new ClosureCompiler({
     languageOut: 'ECMASCRIPT6',
     compilationLevel: 'WHITESPACE_ONLY',
     warningLevel: 'QUIET',
-    jsCode: ['./site/dist/js/all.js']
+    jsCode: ['./site/static/js/all.js']
   },
 });
 
-const cleanWebpackPlugin = new CleanWebpackPlugin(['site/dist']);
+const cleanWebpackPlugin = new CleanWebpackPlugin(['site/static']);
 const hotModulePlugin = new webpack.HotModuleReplacementPlugin();
 
-let plugins = [extractSass];
+let plugins = [sassLint, extractSass];
 
 if (isProduction) {
   plugins.push(compilerPlugin);
+  plugins.push(copyFiles);
 } else {
   plugins.push(hotModulePlugin);
 }
@@ -36,7 +52,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './site/'),
-    filename: './dist/js/all.js'
+    filename: './static/js/all.js'
   },
 
   devServer: {
@@ -56,7 +72,17 @@ module.exports = {
         test: /\.scss$/,
         use: extractSass.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                url: false
+              }
+            },
+            {
+              loader: 'sass-loader'
+            }
+          ]
         })
       },
       {
@@ -64,8 +90,8 @@ module.exports = {
         use: [{
           loader: 'file-loader',
           options: {
-            outputPath: 'dist/images/',
-            name: '[name].[ext]',
+            outputPath: 'static/',
+            name: 'images/[name].[ext]',
             useRelativePath: true
           }
         }]

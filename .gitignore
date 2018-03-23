@@ -7,4 +7,4 @@ npm-debug.log
 npm-debug.log*
 
 # Compile targets to ignore
-site/dist
+site/static
