@@ -8,7 +8,7 @@ describe('Core', () => {
     expect(coreComponent.addTwoNumbers(2, 3)).toEqual(5);
   });
 
-  it('should concatanate two strings', () => {
+  it('should concatenate two strings', () => {
     expect(coreComponent.concatTwoStrings('hello', 'world')).toEqual('helloworld');
   });
 });
