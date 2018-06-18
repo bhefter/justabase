@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractCssPlugin = require('mini-css-extract-plugin');
 const ClosureCompiler = require('google-closure-compiler-js').webpack;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const sassLintPlugin = require('sasslint-webpack-plugin');
@@ -8,7 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'prod';
 
-const extractSass = new ExtractTextPlugin({
+const extractSass = new ExtractCssPlugin({
   filename: './static/css/all.css'
 });
 
@@ -50,6 +50,8 @@ if (isProduction) {
 module.exports = {
   entry: ['./src/ts/all.ts', './src/scss/all.scss'],
 
+  mode: isProduction ? 'production' : 'development',
+
   output: {
     path: path.resolve(__dirname, './site/'),
     filename: './static/js/all.js'
@@ -69,30 +71,22 @@ module.exports = {
        exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
-        use: extractSass.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                url: false
-              }
-            },
-            {
-              loader: 'sass-loader'
-            }
-          ]
-        })
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          ExtractCssPlugin.loader,
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [{
           loader: 'file-loader',
           options: {
-            outputPath: 'static/',
-            name: 'images/[name].[ext]',
-            useRelativePath: true
+            name: '[name].[ext]',
+            outputPath: './static/',
+            publicPath: '../images/',
+            useRelativePath: true,
           }
         }]
       }]

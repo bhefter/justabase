@@ -1,6 +1,5 @@
 # General files to ignore.
 .DS_Store
-.package-lock.json
 
 # Node/npm files to ignore.
 node_modules
