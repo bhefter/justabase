@@ -8,3 +8,4 @@ npm-debug.log*
 
 # Compile targets to ignore
 site/static
+coverage

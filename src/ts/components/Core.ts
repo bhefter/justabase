@@ -18,6 +18,16 @@ export class Core {
 
   @autobind
   activateElement() {
+    if (!this.elem) { return; }
+
     this.elem.classList.add(CLASS_NAMES.ACTIVE);
+  }
+
+  addTwoNumbers(num1: number, num2: number): number {
+    return num1 + num2;
+  }
+
+  concatTwoStrings(string1: string, string2: string): string {
+    return `${string1}${string2}`;
   }
 }
