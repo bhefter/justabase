@@ -5,6 +5,8 @@ It uses [TypeScript](https://github.com/Microsoft/TypeScript) and [SASS](http://
 
 I also include some initial TypeScript files and utility styles that help get moving more quickly.
 
+[karma-typescript](https://github.com/monounity/karma-typescript) is also included for unit testing and a couple of simple test cases are used as an example. Tests are automatically run on build, but you can also run tests with a watcher by running `npm run test` from the project root directory.
+
 ## Installation
 Requires [NodeJS](https://nodejs.org).
 
