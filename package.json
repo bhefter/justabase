@@ -12,30 +12,30 @@
   "dependencies": {
     "@types/jasmine": "^2.8.8",
     "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.1",
+    "copy-webpack-plugin": "^4.5.2",
     "core-decorators": "^0.20.0",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
     "google-closure-compiler-js": "^20180610.0.0",
-    "jasmine-core": "^3.1.0",
-    "karma": "^2.0.3",
+    "jasmine-core": "^3.2.1",
+    "karma": "^2.0.5",
     "karma-chrome-launcher": "^2.2.0",
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.1.2",
-    "karma-typescript": "^3.0.12",
-    "mini-css-extract-plugin": "^0.4.0",
-    "node-sass": "^4.9.0",
+    "karma-typescript": "^3.0.13",
+    "mini-css-extract-plugin": "^0.4.3",
+    "node-sass": "^4.9.3",
     "sanitize.css": "^5.0.0",
     "sass-lint": "^1.12.1",
-    "sass-loader": "^7.0.3",
+    "sass-loader": "^7.1.0",
     "sasslint-webpack-plugin": "^1.0.4",
     "style-loader": "^0.21.0",
-    "ts-loader": "^4.4.1",
-    "tslint": "^5.10.0",
+    "ts-loader": "^4.5.0",
+    "tslint": "^5.11.0",
     "tslint-loader": "^3.6.0",
     "typescript": "^2.9.2",
-    "webpack": "^4.12.0",
-    "webpack-dev-server": "^3.1.4"
+    "webpack": "^4.20.2",
+    "webpack-dev-server": "^3.1.9"
   },
   "scripts": {
     "dev": "webpack && webpack-dev-server",
@@ -44,6 +44,6 @@
     "test-once": "karma start --single-run"
   },
   "devDependencies": {
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.1.1"
   }
 }
